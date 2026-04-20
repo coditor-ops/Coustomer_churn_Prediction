@@ -1,0 +1,285 @@
+:root {
+    --bg-color: #05050a;
+    --neon-blue: #00f3ff;
+    --neon-purple: #bc13fe;
+    --neon-red: #ff2a2a;
+    --glass-bg: rgba(255, 255, 255, 0.05);
+    --glass-border: rgba(255, 255, 255, 0.1);
+    --text-primary: #ffffff;
+    --text-secondary: #a0a0b0;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Outfit', sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-primary);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow-x: hidden;
+    position: relative;
+    padding: 2rem;
+}
+
+/* Background animated orbs */
+.background-orbs {
+    position: fixed;
+    top: 0; left: 0; width: 100vw; height: 100vh;
+    z-index: -1;
+    overflow: hidden;
+    filter: blur(100px);
+}
+
+.orb {
+    position: absolute;
+    border-radius: 50%;
+    opacity: 0.5;
+    animation: float 20s infinite alternate;
+}
+
+.orb-1 {
+    width: 40vw; height: 40vw;
+    background: var(--neon-purple);
+    top: -10%; left: -10%;
+}
+
+.orb-2 {
+    width: 35vw; height: 35vw;
+    background: var(--neon-blue);
+    bottom: -10%; right: -10%;
+    animation-delay: -5s;
+}
+
+.orb-3 {
+    width: 25vw; height: 25vw;
+    background: #0044ff;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    animation-delay: -10s;
+}
+
+@keyframes float {
+    0% { transform: translate(0, 0) scale(1); }
+    100% { transform: translate(100px, 100px) scale(1.2); }
+}
+
+/* Glass Container */
+.glass-container {
+    background: var(--glass-bg);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid var(--glass-border);
+    border-radius: 24px;
+    padding: 3rem;
+    width: 100%;
+    max-width: 1000px;
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    position: relative;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+header h1 {
+    font-size: 3rem;
+    font-weight: 800;
+    margin-bottom: 0.5rem;
+    letter-spacing: -1px;
+}
+
+.neon-text {
+    color: transparent;
+    -webkit-text-stroke: 1px var(--neon-blue);
+    text-shadow: 0 0 10px rgba(0, 243, 255, 0.5);
+}
+
+header p {
+    color: var(--text-secondary);
+    font-size: 1.1rem;
+}
+
+/* Form Grid */
+.grid-form {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 1.5rem;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.form-group label {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    font-weight: 600;
+}
+
+.form-group select,
+.form-group input {
+    background: rgba(0, 0, 0, 0.3);
+    border: 1px solid var(--glass-border);
+    color: var(--text-primary);
+    padding: 0.8rem 1rem;
+    border-radius: 12px;
+    font-family: inherit;
+    font-size: 1rem;
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+.form-group select:focus,
+.form-group input:focus {
+    border-color: var(--neon-blue);
+    box-shadow: 0 0 10px rgba(0, 243, 255, 0.2);
+    background: rgba(0, 0, 0, 0.5);
+}
+
+.form-group select option {
+    background: var(--bg-color);
+    color: var(--text-primary);
+}
+
+.form-actions {
+    grid-column: 1 / -1;
+    display: flex;
+    justify-content: center;
+    margin-top: 1.5rem;
+}
+
+/* Neon Button */
+.neon-btn {
+    position: relative;
+    padding: 1rem 3rem;
+    font-size: 1.2rem;
+    font-weight: 800;
+    color: var(--bg-color);
+    background: var(--neon-blue);
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 20px rgba(0, 243, 255, 0.4), 0 0 40px rgba(0, 243, 255, 0.2);
+    font-family: inherit;
+}
+
+.neon-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 0 30px rgba(0, 243, 255, 0.6), 0 0 60px rgba(0, 243, 255, 0.4);
+}
+
+.neon-btn:active {
+    transform: translateY(1px);
+}
+
+.neon-btn span {
+    position: relative;
+    z-index: 2;
+}
+
+/* Result Modal Overlay Style inside container */
+.result-panel {
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    width: 90%; max-width: 400px;
+    background: rgba(10, 10, 15, 0.85);
+    backdrop-filter: blur(30px);
+    -webkit-backdrop-filter: blur(30px);
+    border: 1px solid var(--neon-purple);
+    border-radius: 20px;
+    padding: 2.5rem;
+    text-align: center;
+    box-shadow: 0 0 50px rgba(188, 19, 254, 0.3);
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    opacity: 1;
+    transition: opacity 0.4s ease, transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.result-panel.hidden {
+    opacity: 0;
+    pointer-events: none;
+    transform: translate(-50%, -40%);
+}
+
+.result-panel h2 {
+    font-size: 2.2rem;
+    font-weight: 800;
+}
+
+.churn-yes {
+    color: var(--neon-red);
+    text-shadow: 0 0 15px rgba(255, 42, 42, 0.5);
+}
+
+.churn-no {
+    color: var(--neon-blue);
+    text-shadow: 0 0 15px rgba(0, 243, 255, 0.5);
+}
+
+.progress-bar-container {
+    width: 100%;
+    height: 10px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.progress-bar {
+    height: 100%;
+    width: 0%;
+    background: linear-gradient(90deg, var(--neon-purple), var(--neon-blue));
+    transition: width 1s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+#predictionConfidence {
+    font-size: 1.1rem;
+    color: var(--text-secondary);
+}
+
+.outline-btn {
+    background: transparent;
+    border: 1px solid var(--text-secondary);
+    color: var(--text-primary);
+    padding: 0.8rem 2rem;
+    border-radius: 50px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: inherit;
+    font-weight: 600;
+}
+
+.outline-btn:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: var(--text-primary);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .glass-container {
+        padding: 2rem;
+    }
+    
+    header h1 {
+        font-size: 2.5rem;
+    }
+}
