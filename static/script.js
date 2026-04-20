@@ -26,7 +26,10 @@ document.addEventListener('DOMContentLoaded', () => {
         data.TotalCharges = parseFloat(data.TotalCharges);
 
         try {
-            const response = await fetch('/predict', {
+            // Replace with your Render/Railway backend URL once deployed
+            const API_URL = 'http://127.0.0.1:8000'; 
+            
+            const response = await fetch(`${API_URL}/predict`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
