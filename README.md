@@ -6,6 +6,8 @@
 ![Python Version](https://img.shields.io/badge/Python-3.9+-blue)
 ![Framework](https://img.shields.io/badge/Framework-FastAPI-05998b)
 
+**🚀 Live Demo:** [https://coustomer-churn-prediction.onrender.com/](https://coustomer-churn-prediction.onrender.com/)
+
 ## ✨ Key Features
 
 -   **Intelligent Prediction Engine**: Powered by a Support Vector Machine (SVC) model trained with **SMOTE** (Synthetic Minority Over-sampling Technique) to ensure high accuracy even with imbalanced datasets.

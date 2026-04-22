@@ -26,8 +26,8 @@ document.addEventListener('DOMContentLoaded', () => {
         data.TotalCharges = parseFloat(data.TotalCharges);
 
         try {
-            // Use relative path - Netlify will redirect /predict to the function
-            const API_URL = ''; 
+            // Use the Render backend URL
+            const API_URL = 'https://coustomer-churn-prediction.onrender.com'; 
             
             const response = await fetch(`${API_URL}/predict`, {
                 method: 'POST',
