@@ -10,7 +10,7 @@
 
 ## ✨ Key Features
 
--   **Intelligent Prediction Engine**: Powered by a Support Vector Machine (SVC) model trained with **SMOTE** (Synthetic Minority Over-sampling Technique) to ensure high accuracy even with imbalanced datasets.
+-   **Intelligent Prediction Engine**: Powered by a Support Vector Machine (SVC) model trained with **SMOTE** (Synthetic Minority Over-sampling Technique). It achieves **~77% Accuracy and 74% Churn Recall** on the authentic Telco Customer Churn dataset.
 -   **Real-time Confidence Scoring**: Provides a percentage-based confidence level for every prediction, helping businesses gauge the reliability of each retention insight.
 -   **Premium "Cyber-Oracle" UI**: A state-of-the-art frontend featuring:
     -   **Glassmorphism Design**: Frosted glass containers and vibrant background orbs.
@@ -36,8 +36,8 @@
 
 1.  **Clone the repository**:
     ```bash
-    git clone https://github.com/your-username/customer-churn-predict.git
-    cd customer-churn-predict
+    git clone https://github.com/coditor-ops/Coustomer_churn_Prediction.git
+    cd Coustomer_churn_Prediction
     ```
 
 2.  **Install dependencies**:
@@ -45,31 +45,40 @@
     pip install -r requirements.txt
     ```
 
-3.  **Run the Application**:
+3.  *(Optional)* **Retrain the Model**:
+    If you wish to retrain the models on the dataset from scratch:
+    ```bash
+    python train_and_save.py
+    ```
+
+4.  **Run the Application**:
     ```bash
     python app.py
     ```
 
-4.  **Access the Dashboard**:
+5.  **Access the Dashboard**:
     Open your browser and navigate to `http://localhost:8000`.
 
 ## 📂 Project Structure
 
 ```text
-├── models/               # Pre-trained ML models and processors
-├── static/               # Frontend assets (HTML, CSS, JS)
-├── app.py                # FastAPI server and inference logic
-├── requirements.txt      # Project dependencies
-└── README.md             # Project documentation
+├── models/                               # Pre-trained ML models (.joblib)
+├── static/                               # Frontend assets (HTML, CSS, JS)
+├── app.py                                # FastAPI server and inference logic
+├── train_and_save.py                     # Official model training pipeline script
+├── Customer Churn Problem.ipynb          # Exploratory Data Analysis & experimentation
+├── WA_Fn-UseC_-Telco-Customer-Churn.csv  # Authentic Telco training dataset
+├── requirements.txt                      # Project dependencies
+└── README.md                             # Project documentation
 ```
 
 ## 🧠 Machine Learning Pipeline
 
 The underlying model was developed using a rigorous pipeline:
-1.  **Data Cleaning**: Coercing `TotalCharges` to numeric and handling missing values.
+1.  **Data Cleaning**: Coercing `TotalCharges` to numeric and properly handling missing/blank values.
 2.  **Feature Engineering**: Transformation of categorical variables (Contract, Payment Method, etc.) and scaling of numerical metrics (Tenure, Charges).
-3.  **Balancing**: Utilizing SMOTE to address the inherent class imbalance in churn data.
-4.  **Optimization**: SVM kernel tuning for maximum separation between "Stay" and "Churn" classes.
+3.  **Balancing**: Utilizing **SMOTE** to synthesize minority class examples and address the inherent ~73/27 class imbalance in the Telco dataset.
+4.  **Optimization**: SVM kernel tuning with probability distributions for maximum separation between "Stay" and "Churn" classes.
 
 ## 📄 License
 
